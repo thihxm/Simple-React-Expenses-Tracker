@@ -27,11 +27,13 @@
   ],
   "rules": {
     "react/jsx-filename-extension": [
-      "off",
+      "always",
       {
         "extensions": [
           ".js",
-          ".jsx"
+          ".jsx",
+          ".ts",
+          ".tsx"
         ]
       }
     ],
