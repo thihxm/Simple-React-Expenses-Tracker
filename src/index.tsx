@@ -15,7 +15,7 @@ createServer({
         {
           id: 1,
           title: 'Website Development',
-          value: 12000,
+          amount: 12000,
           type: 'income',
           category: 'Development',
           createdAt: new Date('2021-02-12 09:00:00'),
@@ -23,7 +23,7 @@ createServer({
         {
           id: 2,
           title: 'Rent',
-          value: 1100,
+          amount: 1100,
           type: 'outcome',
           category: 'House',
           createdAt: new Date('2021-02-15 09:00:00'),

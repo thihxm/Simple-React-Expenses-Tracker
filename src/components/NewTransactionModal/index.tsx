@@ -29,14 +29,22 @@ export function NewTransactionModal({
     setType(type)
   }
 
-  function handleCreateNewTransaction(event: FormEvent<HTMLFormElement>) {
+  async function handleCreateNewTransaction(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
-    createTransaction({
+
+    await createTransaction({
       title,
       amount,
       type,
       category,
     })
+
+    setTitle('')
+    setAmount(0)
+    setType('income')
+    setCategory('')
+
+    onRequestClose()
   }
 
   return (
