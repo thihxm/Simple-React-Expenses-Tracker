@@ -1,23 +1,21 @@
-import { useContext } from 'react'
-
 import incomeImg from '../../assets/income.svg'
 import outcomeImg from '../../assets/outcome.svg'
 import totalImg from '../../assets/total.svg'
-import { TransactionsContext } from '../../TransactionsContext'
+import { useTransactions } from '../../hooks/useTransactionsContext'
 import { Container } from './styles'
 
 export function Summary() {
-  const { transactions } = useContext(TransactionsContext)
+  const { transactions } = useTransactions()
 
   const summary = transactions.reduce(
     (acc, transaction) => {
+      console.log(acc)
       if (transaction.type === 'income') {
         acc.incomes += transaction.amount
-        acc.total += acc.incomes
       } else {
         acc.outcomes += transaction.amount
-        acc.total -= acc.outcomes
       }
+      acc.total = acc.incomes - acc.outcomes
 
       return acc
     },
