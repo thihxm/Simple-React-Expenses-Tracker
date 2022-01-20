@@ -9,7 +9,6 @@ export function Summary() {
 
   const summary = transactions.reduce(
     (acc, transaction) => {
-      console.log(acc)
       if (transaction.type === 'income') {
         acc.incomes += transaction.amount
       } else {
