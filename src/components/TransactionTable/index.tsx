@@ -4,7 +4,7 @@ import { TransactionsContext } from '../../TransactionsContext'
 import { Container } from './styles'
 
 export function TransactionsTable() {
-  const transactions = useContext(TransactionsContext)
+  const { transactions } = useContext(TransactionsContext)
 
   return (
     <Container>
@@ -27,7 +27,7 @@ export function TransactionsTable() {
                 {new Intl.NumberFormat('pt-BR', {
                   style: 'currency',
                   currency: 'BRL',
-                }).format(transaction.value)}
+                }).format(transaction.amount)}
               </td>
               <td>{transaction.category}</td>
               <td>

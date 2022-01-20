@@ -5,13 +5,22 @@ import { api } from './services/api'
 interface Transaction {
   id: number
   title: string
-  value: number
+  amount: number
   type: string
   category: string
   createdAt: string
 }
 
-export const TransactionsContext = createContext<Transaction[]>([])
+type TransactionInput = Omit<Transaction, 'id' | 'createdAt'>
+
+interface TransactionContextData {
+  transactions: Transaction[]
+  createTransaction: (transaction: TransactionInput) => void
+}
+
+export const TransactionsContext = createContext<TransactionContextData>(
+  {} as TransactionContextData
+)
 
 interface TransactionsProviderProps {
   children: ReactNode
@@ -26,8 +35,13 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
       .then((res) => setTransactions(res.data.transactions))
   }, [])
 
+  function createTransaction(transaction: TransactionInput) {
+    api.post('/transactions', transaction)
+  }
+
   return (
-    <TransactionsContext.Provider value={transactions}>
+    // eslint-disable-next-line react/jsx-no-constructed-context-values
+    <TransactionsContext.Provider value={{ transactions, createTransaction }}>
       {children}
     </TransactionsContext.Provider>
   )
