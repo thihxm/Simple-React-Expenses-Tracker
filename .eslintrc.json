@@ -37,6 +37,16 @@
         ]
       }
     ],
+    "react/jsx-no-bind": [
+      "error",
+      {
+        "ignoreDOMComponents": false,
+        "ignoreRefs": false,
+        "allowArrowFunctions": true,
+        "allowFunctions": true,
+        "allowBind": false
+      }
+    ],
     "camelcase": "off",
     "import/no-unresolved": "error",
     "comma-dangle": [
